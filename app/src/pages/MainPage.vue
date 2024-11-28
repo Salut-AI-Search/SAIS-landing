@@ -1,27 +1,52 @@
 <template>
-  <img class="background" :src="s3 + 'paper/background.png'" />
+  <div style="overflow-x: hidden">
+    <div v-if="showOverlay" class="overlay" />
+    <LoadingComponent v-if="showLoadingPage" :loading="loading" />
+    <HomeComponent @finish-loading="loading = false" />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import useAssets from '../composables/useAssets';
-function getRandomItem(arr: Array<string>) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+import HomeComponent from '../components/HomeComponent';
+import LoadingComponent from '../components/LoadingComponent';
+import { ref, watch } from 'vue';
 
-const { getAssets } = useAssets();
+const loading = ref(true);
+const showLoadingPage = ref(true);
+const showOverlay = ref(false);
 
-const s3 = ref(process.env.VUE_APP_S3);
-// const theme = ref(getRandomItem(['paper', 'chalk', 'modern', 'itam']));
-const theme = ref('paper');
-
-onMounted(() => {
-  console.log(getAssets());
+watch(loading, () => {
+  showOverlay.value = true;
+  setTimeout(() => {
+    showLoadingPage.value = false;
+  }, 300);
+  setTimeout(() => {
+    showOverlay.value = false;
+  }, 1200);
 });
 </script>
 
 <style lang="scss" scoped>
-.background {
-  width: 100%;
+@keyframes overlay-animation {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.overlay {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  animation: forwards overlay-animation 1.2s;
+  z-index: 9999;
 }
 </style>

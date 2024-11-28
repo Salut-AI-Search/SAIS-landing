@@ -3,7 +3,8 @@
 </template>
 
 <script setup lang="ts">
+import './style.css';
 defineOptions({
-  name: 'App'
+  name: 'App',
 });
 </script>
