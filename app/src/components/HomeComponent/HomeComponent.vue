@@ -121,16 +121,16 @@ const areAllAssetsLoaded = () => {
 const step = ref(1);
 const updateAnimation = ref(false);
 
-// watch([step, updateAnimation], () => {
-//   setTimeout(() => {
-//     if (step.value > 9) {
-//     } else if (step.value > 4) {
-//       // step.value = 1;
-//     } else {
-//       step.value = step.value + 1;
-//     }
-//   }, 400);
-// });
+watch([step, updateAnimation], () => {
+  setTimeout(() => {
+    if (step.value > 9) {
+    } else if (step.value > 4) {
+      // step.value = 1;
+    } else {
+      step.value = step.value + 1;
+    }
+  }, 400);
+});
 
 onMounted(() => {
   getAssets().then((res) => {
