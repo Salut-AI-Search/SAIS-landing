@@ -9,7 +9,7 @@
       <img :src="generateLink('background-6.png')" @load="loadedBackground" />
     </div>
 
-    <button
+    <!-- <button
       style="position: absolute; right: 0px; top: 200px"
       @click="step += 1"
     >
@@ -20,7 +20,7 @@
       @click="step -= 1"
     >
       -
-    </button>
+    </button> -->
 
     <div class="letter s-1" :class="`step${step}`">
       <img class="" :src="generateLink('s-1.svg')" @load="loadedAsset" />
