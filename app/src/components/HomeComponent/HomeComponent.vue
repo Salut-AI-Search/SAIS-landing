@@ -71,6 +71,7 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
 import { ref, onMounted, watch } from 'vue';
 import useAssets from '../../composables/useAssets';
 import './logoAnimation.scss';

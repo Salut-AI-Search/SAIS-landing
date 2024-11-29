@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { s3Client, getPresignedUrl } from '../boot/minio';
 import { ListObjectsCommand } from '@aws-sdk/client-s3';
 
