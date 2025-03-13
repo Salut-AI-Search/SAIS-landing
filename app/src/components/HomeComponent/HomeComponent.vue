@@ -68,6 +68,37 @@
 
     <p class="text chat-title">перейти в чат</p>
   </div>
+  <div class="info">
+    <section class="section-1">
+      <div class="text">
+        <h1>Как пользоваться ботом?</h1>
+        <h2>
+          зарегистрируйся, создай чат и вперед! Бот уже обучен на Moodle и
+          Canvas. Если тебе нужна помощь с какими-то своими файлами, то прикрепи
+          их в чат с помощью скрепочки
+        </h2>
+      </div>
+      <div class="images">
+        <img id="img1" :src="generateLink('paper-1.svg')" />
+        <img id="img2" :src="generateLink('paper-2.svg')" />
+      </div>
+    </section>
+    <img id="tape" :src="generateLink('tape.svg')" />
+    <section class="section-2">
+      <div class="text">
+        <h1>Что такое Salut! коммьюнити?</h1>
+        <h2>
+          Мы - сообщество инициативных ребят. у каждого из нас есть амбиции и
+          желание творить и создавать, в чем мы помогаем друг другу. будем рады
+          узнать тебя получше и поработать вместе!
+        </h2>
+      </div>
+      <div class="images">
+        <img id="img1" :src="generateLink('paper-3.svg')" />
+        <img id="img2" :src="generateLink('paper-4.svg')" />
+      </div>
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -105,7 +136,6 @@ const loadedBackground = () => {
 };
 
 const areAllAssetsLoaded = () => {
-  console.log(totalLoadedAssets.value);
   if (totalLoadedAssets.value == 15) {
     loading.value = false;
     emits('finish-loading');
@@ -148,7 +178,7 @@ onMounted(() => {
   width: 100%;
   position: absolute;
   img {
-    width: 100vw;
+    width: 100%;
   }
 }
 
@@ -173,6 +203,65 @@ onMounted(() => {
   img {
     width: inherit;
     height: inherit;
+  }
+}
+
+.info {
+  position: absolute;
+  top: 100vh;
+  left: 0;
+
+  #tape {
+    width: 100%;
+  }
+
+  .section-1,
+  .section-2 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+
+    .text {
+      width: 60%;
+      padding-left: 8%;
+
+      h1 {
+        font-size: 4.5rem;
+      }
+      h2 {
+        font-size: 2.5rem;
+      }
+    }
+
+    .images {
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+
+      #img1,
+      #img2 {
+        margin-left: 30%;
+        width: 50%;
+      }
+
+      #img2 {
+        margin-top: 20%;
+      }
+    }
+  }
+  .section-2 {
+    flex-direction: row-reverse;
+
+    .text {
+      padding-left: 0;
+      padding-right: 8%;
+    }
+
+    .images {
+      #img2 {
+        margin-top: 10%;
+      }
+    }
   }
 }
 </style>
